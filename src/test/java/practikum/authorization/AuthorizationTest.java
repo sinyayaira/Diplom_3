@@ -20,7 +20,6 @@ public class AuthorizationTest extends UserDataTest {
 
     @BeforeClass
     public static void setUp() {
-        RestAssured.baseURI = "https://stellarburgers.nomoreparties.site";
         cleanup();
     }
 
@@ -39,11 +38,14 @@ public class AuthorizationTest extends UserDataTest {
     @Test
     @DisplayName("Check authorization by LoginButton on main page")
     public void authorizationByLoginButtonOnMainPage() {
+        userClient.register(client)
+                .statusCode(200);
+
         MainPage mainPage = page(MainPage.class);
         mainPage.clickLoginInAccountButton();
         ProfilePage profilePage = page(ProfilePage.class);
-        profilePage.setEmail(AUTHORIZATION_EMAIL);
-        profilePage.setPassword(AUTHORIZATION_PASSWORD);
+        profilePage.setEmail(EMAIL);
+        profilePage.setPassword(PASSWORD);
         profilePage.loginButtonClick();
 
         assertTrue("Пользователь не авторизовался", mainPage.isCreateOrderButtonVisible());
@@ -53,11 +55,14 @@ public class AuthorizationTest extends UserDataTest {
     @Test
     @DisplayName("Check authorization by Profile Section on main page")
     public void authorizationByProfileSection() {
+        userClient.register(client)
+                .statusCode(200);
+
         MainPage mainPage = page(MainPage.class);
         mainPage.clickProfileSection();
         ProfilePage profilePage = page(ProfilePage.class);
-        profilePage.setEmail(AUTHORIZATION_EMAIL);
-        profilePage.setPassword(AUTHORIZATION_PASSWORD);
+        profilePage.setEmail(EMAIL);
+        profilePage.setPassword(PASSWORD);
         profilePage.loginButtonClick();
 
         assertTrue("Пользователь не авторизовался", mainPage.isCreateOrderButtonVisible());
@@ -66,6 +71,9 @@ public class AuthorizationTest extends UserDataTest {
     @Test
     @DisplayName("Check authorization by Registration page")
     public void authorizationByRegistrationPage() {
+        userClient.register(client)
+                .statusCode(200);
+
         MainPage mainPage = page(MainPage.class);
         mainPage.clickProfileSection();
         ProfilePage profilePage = page(ProfilePage.class);
@@ -74,8 +82,8 @@ public class AuthorizationTest extends UserDataTest {
         RegistrationPage registrationPage = page(RegistrationPage.class);
         registrationPage.clickLoginButtonOnRegistrationPage();
 
-        profilePage.setEmail(AUTHORIZATION_EMAIL);
-        profilePage.setPassword(AUTHORIZATION_PASSWORD);
+        profilePage.setEmail(EMAIL);
+        profilePage.setPassword(PASSWORD);
         profilePage.loginButtonClick();
 
         assertTrue("Пользователь не авторизовался", mainPage.isCreateOrderButtonVisible());
@@ -85,6 +93,9 @@ public class AuthorizationTest extends UserDataTest {
     @Test
     @DisplayName("Check authorization by Recover Password page")
     public void authorizationByRecoverPasswordPage() {
+        userClient.register(client)
+                .statusCode(200);
+
         MainPage mainPage = page(MainPage.class);
         mainPage.clickProfileSection();
         ProfilePage profilePage = page(ProfilePage.class);
@@ -93,8 +104,8 @@ public class AuthorizationTest extends UserDataTest {
         RecoverPasswordPage recoverPasswordPage = page(RecoverPasswordPage.class);
         recoverPasswordPage.clickLoginButtonOnRecoverPasswordPage();
 
-        profilePage.setEmail(AUTHORIZATION_EMAIL);
-        profilePage.setPassword(AUTHORIZATION_PASSWORD);
+        profilePage.setEmail(EMAIL);
+        profilePage.setPassword(PASSWORD);
         profilePage.loginButtonClick();
 
         assertTrue("Пользователь не авторизовался", mainPage.isCreateOrderButtonVisible());
@@ -104,12 +115,15 @@ public class AuthorizationTest extends UserDataTest {
     @Test
     @DisplayName("Check exit by LogOut Button")
     public void exitByLogOutButton() {
+        userClient.register(client)
+                .statusCode(200);
+
         MainPage mainPage = page(MainPage.class);
         mainPage.clickProfileSection();
 
         ProfilePage profilePage = page(ProfilePage.class);
-        profilePage.setEmail(AUTHORIZATION_EMAIL);
-        profilePage.setPassword(AUTHORIZATION_PASSWORD);
+        profilePage.setEmail(EMAIL);
+        profilePage.setPassword(PASSWORD);
         profilePage.loginButtonClick();
 
         mainPage.clickProfileSection();

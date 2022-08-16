@@ -31,9 +31,9 @@ public class RegistrationTest extends UserDataWithCleanUp {
         profilePage.clickRegistrationLink();
 
         RegistrationPage registrationPage = page(RegistrationPage.class);
-        registrationPage.setName(REGISTRATION_NAME);
-        registrationPage.setEmail(REGISTRATION_EMAIL);
-        registrationPage.setPassword(REGISTRATION_PASSWORD);
+        registrationPage.setName(NAME);
+        registrationPage.setEmail(EMAIL);
+        registrationPage.setPassword(PASSWORD);
 
         registrationPage.clickRegisterButton();
 
@@ -49,8 +49,8 @@ public class RegistrationTest extends UserDataWithCleanUp {
         profilePage.clickRegistrationLink();
 
         RegistrationPage registrationPage = page(RegistrationPage.class);
-        registrationPage.setName(REGISTRATION_NAME);
-        registrationPage.setEmail(REGISTRATION_EMAIL);
+        registrationPage.setName(NAME);
+        registrationPage.setEmail(EMAIL);
         registrationPage.setPassword("qazxs");
 
         registrationPage.clickRegisterButton();

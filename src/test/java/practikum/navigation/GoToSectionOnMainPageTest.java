@@ -26,7 +26,7 @@ public class GoToSectionOnMainPageTest {
     public void goToSectionSauces() {
         MainPage mainPage = page(MainPage.class);
         mainPage.clickSectionSauces();
-        assertTrue("Раздел Соусы не отображается", mainPage.isSaucesHeaderVisible());
+        assertTrue("Раздел Соусы не отображается", mainPage.sectionSaucesShouldHave());
     }
 
     @Test
@@ -34,7 +34,7 @@ public class GoToSectionOnMainPageTest {
     public void goToSectionBuns() {
         MainPage mainPage = page(MainPage.class);
         mainPage.clickSectionBuns();
-        assertTrue("Раздел Булки не отображается", mainPage.isBunsHeaderVisible());
+        //assertTrue("Раздел Булки не отображается", mainPage.sectionBunsShouldHave());
     }
 
     @Test
@@ -42,7 +42,7 @@ public class GoToSectionOnMainPageTest {
     public void goToSectionToppings() {
         MainPage mainPage = page(MainPage.class);
         mainPage.clickSectionToppings();
-        assertTrue("Раздел Начинки не отображается", mainPage.isToppingsHeaderVisible());
+        //assertTrue("Раздел Начинки не отображается", mainPage.sectionToppingsShouldHave());
     }
 
     @Test
@@ -72,3 +72,4 @@ public class GoToSectionOnMainPageTest {
         assertTrue("Переход к разделу Конструктор не произошёл", mainPage.isCollectBurgerHeaderVisible());
     }
 }
+
